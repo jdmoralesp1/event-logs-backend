@@ -13,7 +13,7 @@ Se recomienda usar Visual Studio Community (o alguna otra de sus versiones) para
 2. Una vez Abierta la solución ingrese en el archivo `Api/PruebaTecnica/appsettings.json` y modifique la propiedad `PruebaTecnicaDbConnection` por su cadena de conexión.
 
     1. Si es su servidor local y puede acceder al mismo con sus credenciales de windows, entonces en el valor de `PruebaTecnicaDbConnection` cambie el `JUAN\\SQLEXPRESS` por el nombre de su servidor.
-    2. Si va a usar una base de datos externa con autenticación de usuario de sql server cambie el valor de `PruebaTecnicaDbConnection` por algo como esto `Server=<su servidor>;Initial Catalog=PruebaTecnicaIFX;Persist Security Info=False;User ID=<usuario>;Password=<contraseña>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`.
+    2. Si va a usar una base de datos externa con autenticación de usuario de sql server cambie el valor de `PruebaTecnicaDbConnection` por algo como esto `Server=<su servidor>;Initial Catalog=Registration;Persist Security Info=False;User ID=<usuario>;Password=<contraseña>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`.
 
 3. En la parte superior izquierda busque la opción de `Herramientas -> Administrador de Paquetes Nuget -> Consola del Administrador de paquetes`.
 4. Se abrirá una cosola en la que buscará en la parte superior una opción llamada `Proyecto predeterminado` donde seleccionará el que diga `PruebaTecnica.Infrastructure`.
