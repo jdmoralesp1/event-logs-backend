@@ -8,6 +8,7 @@ using PruebaTecnica.Application.Exceptions;
 using PruebaTecnica.Application.Exceptions.Interfaces;
 using PruebaTecnica.Application.Features.EventsLog.V1;
 using PruebaTecnica.Infrastructure.Context;
+using PruebaTecnica.Infrastructure.Options;
 using PruebaTecnica.Infrastructure.Repository;
 using PruebaTecnica.Infrastructure.Repository.Contracts;
 using PruebaTecnica.Infrastructure.UnitOfWork;
@@ -24,15 +25,13 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<PruebaTecnicaWriteContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("PruebaTecnicaDbConnection"));
+    DbContextOptionsSetup.ConfigureWriteOptions(options, builder.Configuration.GetConnectionString("PruebaTecnicaDbConnection"));
 });
 
 builder.Services.AddDbContext<PruebaTecnicaReadContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("PruebaTecnicaDbConnection"));
+    DbContextOptionsSetup.ConfigureReadOptions(options, builder.Configuration.GetConnectionString("PruebaTecnicaDbConnection"));
 });
-
-//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
 foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
 {
