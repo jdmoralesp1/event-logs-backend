@@ -21,14 +21,18 @@ Se recomienda usar Visual Studio Community (o alguna otra de sus versiones) para
 6. Una vez ejecutado el comando y asegurandose de que no hayan ocurrido errores ejecute la aplicación presionando en su teclado la tecla `F5` o el boton de ejecucíon de Visual Studio.
 7. Si realizo todo el procedimiento de manera correcta deberia crearse una nueva instancia de su navegador por defecto mostrando el swagger de la api.
 
-**Notas**:
+**Sobre el Proyecto**
 - 
-1. **Consideraciones:** Pueden consumir directamente la api desde el swagger o pueden descargar [Aqui](https://drive.google.com/file/d/1Tdka-fUfBkm0U0FzSWm-p0UMj9fH1pI2/view?usp=drive_link) una colección de postman con ejemplos de como utilizar la api
-2. **Arquitectura:** El proyecto se creo una arquitectura hexagonal con DDD en la que se separaron las capas de dominio, aplicación, infraestructura y presentación en diferentes proyectos, esto con el fin de hacer mantenible cada una de las capas y escalable en el tiempo.
-3. **Excepciones:** En el manejo de excepciones se capturan y retornan de forma controlada a través de un middleware, tanto las excepciones dinámicas de FluentValidation y las excepciones no controladas.
-4. **Patrones de diseño:** Se usaron diferentes patrones de diseño para su construcción entre los cuales estan: Respository, DependencyInjection-Singleton, Mediator, Decorator y Result
-5. **Persistencia:** 
+1. **Arquitectura:** El proyecto se creo una arquitectura hexagonal con DDD en la que se separaron las capas de dominio, aplicación, infraestructura y presentación en diferentes proyectos, esto con el fin de hacer mantenible cada una de las capas y escalable en el tiempo.
+2. **Excepciones:** En el manejo de excepciones se capturan y retornan de forma controlada a través de un middleware, tanto las excepciones dinámicas de FluentValidation y las excepciones no controladas.
+3. **Patrones de diseño:** Se usaron diferentes patrones de diseño para su construcción entre los cuales estan: Respository, DependencyInjection-Singleton, Mediator, Decorator y Result
+4. **Persistencia:** 
 
     1. Para la persistencia de datos se utilizó SQL Server con EntityFramework con enfoque CodeFirst donde las entidades primero se crean en la capa domain y luego se actualiza la base de datos en base a la misma.
     2. Se separaron los contextos de modificación y lectura para que con el tiempo y posible aumento del proyecto no se creen esperas entre las operaciones de lectura y modificación respectivamente.
     3. Asi mismo se usa una clase `DbContextOptionsSetup` donde se hacen configuraciones de reconexión en caso de fallas de en la conexión al servidor
+
+**Notas**:
+- 
+1. Pueden consumir directamente la api desde el swagger o pueden descargar [Aqui](https://drive.google.com/file/d/1Tdka-fUfBkm0U0FzSWm-p0UMj9fH1pI2/view?usp=drive_link) una colección de postman con ejemplos de como utilizar la api
+2. Se utilizo metodo POST en vez de GET en el obtener todos los eventos de manera consciente debido a que recibo los parametros por el medio del body y el GEt no me permite recibir los parametros por el body
